@@ -1,7 +1,3 @@
-// Daniel Shiffman
-// http://codingtra.in
-// https://youtu.be/CKeyIbT3vXI
-
 class Particle {
   constructor(x, y, hu, firework) {
     this.pos = createVector(x, y);
@@ -9,6 +5,7 @@ class Particle {
     this.lifespan = 255;
     this.hu = hu;
     this.acc = createVector(0, 0);
+    this.size = firework ? 4 : random(10, 20); // Kích thước lớn hơn cho pháo hoa chính, nhỏ hơn cho hạt nổ
     if (this.firework) {
       this.vel = createVector(0, random(-12, -8));
     } else {
@@ -43,10 +40,10 @@ class Particle {
     colorMode(HSB);
 
     if (!this.firework) {
-      strokeWeight(2);
+      strokeWeight(this.size); // Sử dụng kích thước
       stroke(this.hu, 255, 255, this.lifespan);
     } else {
-      strokeWeight(4);
+      strokeWeight(this.size); // Sử dụng kích thước
       stroke(this.hu, 255, 255);
     }
 
