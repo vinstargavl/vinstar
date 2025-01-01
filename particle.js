@@ -5,12 +5,12 @@ class Particle {
     this.lifespan = 255;
     this.hu = hu;
     this.acc = createVector(0, 0);
-    this.size = firework ? 10 : random(2, 6); // Kích thước lớn hơn ngay từ đầu nếu là pháo hoa chính
+    this.size = firework ? 20 : random(2, 6); // Kích thước lớn hơn ngay từ đầu nếu là pháo hoa chính
     if (this.firework) {
       this.vel = createVector(0, random(-12, -8));
     } else {
       this.vel = p5.Vector.random2D();
-      this.vel.mult(random(2, 10));
+      this.vel.mult(random(5, 20));
     }
   }
 
