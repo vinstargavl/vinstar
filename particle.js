@@ -5,12 +5,13 @@ class Particle {
     this.lifespan = 255;
     this.hu = hu;
     this.acc = createVector(0, 0);
-    this.size = firework ? 20 : random(2, 8); // Kích thước lớn hơn ngay từ đầu nếu là pháo hoa chính
+    this.size = firework ? 20 : random(10, 30); // Kích thước ban đầu của hạt nổ
+
     if (this.firework) {
-      this.vel = createVector(0, random(-12, -8));
+      this.vel = createVector(0, random(-12, -8)); // Pháo hoa bắn lên
     } else {
-      this.vel = p5.Vector.random2D();
-      this.vel.mult(random(5, 20)); // Điều chỉnh tốc độ các hạt nổ
+      this.vel = p5.Vector.random2D();  // Hạt nổ di chuyển ngẫu nhiên
+      this.vel.mult(random(5, 20));  // Tăng tốc độ khi nổ
     }
   }
 
@@ -20,10 +21,10 @@ class Particle {
 
   update() {
     if (!this.firework) {
-      this.vel.mult(0.9);
-      this.lifespan -= 4;
-      // Tăng kích thước hạt khi nó di chuyển ra xa, tạo hiệu ứng vụ nổ rộng ra
-      this.size = lerp(this.size, 20, 0.05);  // Lerp làm kích thước lớn dần khi nổ
+      this.vel.mult(0.9);  // Giảm tốc độ của các hạt nổ theo thời gian
+      this.lifespan -= 4;  // Giảm độ trong suốt của các hạt
+      // Giảm kích thước hạt theo thời gian
+      this.size = lerp(this.size, 0, 0.05);  // Dần dần giảm kích thước hạt nổ
     }
     this.vel.add(this.acc);
     this.pos.add(this.vel);
@@ -42,11 +43,11 @@ class Particle {
     colorMode(HSB);
 
     if (!this.firework) {
-      strokeWeight(this.size);
-      stroke(this.hu, 255, 255, this.lifespan);  // Màu sắc và độ trong suốt
+      strokeWeight(this.size);  // Đặt độ dày cho các hạt nổ
+      stroke(this.hu, 255, 255, this.lifespan);  // Màu sắc của các hạt nổ
     } else {
-      strokeWeight(this.size); // Hiển thị kích thước lớn ngay từ đầu
-      stroke(this.hu, 255, 255);
+      strokeWeight(this.size);  // Đặt độ dày cho pháo hoa chính
+      stroke(this.hu, 255, 255);  // Màu sắc của pháo hoa chính
     }
 
     point(this.pos.x, this.pos.y);
