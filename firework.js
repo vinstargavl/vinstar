@@ -43,7 +43,7 @@ class Firework {
     explosionSound.play();  // Phát âm thanh
 
     // Tạo các hạt nổ
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 100; i++) {
       const p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false);
       this.particles.push(p);
     }
