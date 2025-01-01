@@ -10,7 +10,7 @@ class Particle {
       this.vel = createVector(0, random(-12, -8));
     } else {
       this.vel = p5.Vector.random2D();
-      this.vel.mult(random(5, 20));
+      this.vel.mult(random(5, 20)); // Điều chỉnh tốc độ các hạt nổ
     }
   }
 
@@ -22,6 +22,8 @@ class Particle {
     if (!this.firework) {
       this.vel.mult(0.9);
       this.lifespan -= 4;
+      // Tăng kích thước hạt khi nó di chuyển ra xa, tạo hiệu ứng vụ nổ rộng ra
+      this.size = lerp(this.size, 20, 0.05);  // Lerp làm kích thước lớn dần khi nổ
     }
     this.vel.add(this.acc);
     this.pos.add(this.vel);
@@ -41,7 +43,7 @@ class Particle {
 
     if (!this.firework) {
       strokeWeight(this.size);
-      stroke(this.hu, 255, 255, this.lifespan);
+      stroke(this.hu, 255, 255, this.lifespan);  // Màu sắc và độ trong suốt
     } else {
       strokeWeight(this.size); // Hiển thị kích thước lớn ngay từ đầu
       stroke(this.hu, 255, 255);
