@@ -42,9 +42,11 @@ class Firework {
     explosionSound.currentTime = 0;  // Đặt lại thời gian âm thanh về đầu
     explosionSound.play();  // Phát âm thanh
 
-    // Tạo các hạt nổ
-    for (let i = 0; i < 100; i++) {
+    // Tạo các hạt nổ với tốc độ và kích thước lớn hơn
+    for (let i = 0; i < 200; i++) {  // Tăng số lượng hạt nổ
       const p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false);
+      p.vel.mult(random(1.5, 3));  // Tăng tốc độ nổ (phát tán rộng hơn)
+      p.size = random(10, 30);  // Tăng kích thước của hạt nổ
       this.particles.push(p);
     }
   }
@@ -54,7 +56,7 @@ class Firework {
       this.firework.show();
     }
 
-    for (var i = 0; i < this.particles.length; i++) {
+    for (let i = 0; i < this.particles.length; i++) {
       this.particles[i].show();
     }
   }
