@@ -5,7 +5,7 @@ class Particle {
     this.lifespan = 255;
     this.hu = hu;
     this.acc = createVector(0, 0);
-    this.size = firework ? 20 : random(10, 30); // Kích thước ban đầu của hạt nổ
+    this.size = firework ? 20 : random(2, 6); // Kích thước ban đầu của hạt nổ
 
     if (this.firework) {
       this.vel = createVector(0, random(-12, -8)); // Pháo hoa bắn lên
