@@ -25,6 +25,7 @@ class Firework {
       }
     }
 
+    // Kiểm tra các hạt
     for (let i = this.particles.length - 1; i >= 0; i--) {
       this.particles[i].applyForce(gravity);
       this.particles[i].update();
@@ -36,6 +37,12 @@ class Firework {
   }
 
   explode() {
+    // Phát âm thanh khi pháo hoa nổ
+    const explosionSound = document.getElementById('explosion-sound');
+    explosionSound.currentTime = 0;  // Đặt lại thời gian âm thanh về đầu
+    explosionSound.play();  // Phát âm thanh
+
+    // Tạo các hạt nổ
     for (let i = 0; i < 100; i++) {
       const p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false);
       this.particles.push(p);
