@@ -1,7 +1,3 @@
-// Daniel Shiffman
-// http://codingtra.in
-// https://youtu.be/CKeyIbT3vXI
-
 class Firework {
   constructor() {
     this.hu = random(1000);
